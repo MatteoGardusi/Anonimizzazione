@@ -46,5 +46,25 @@ def anonimizza(tab_utenti: str, dst: str, input_data: dict):
     out_file.close()
 
 
+def elimina_utente_coinvolto(src: str):
+    """
+    riceve un file di log e elimina il campo "Utente coinvolto"
+    :param src: path file di log
+    :return:
+    """
+    input_data = json.load(open(src))
+    for log in range(len(input_data)):
+        del (input_data[log][2])
+
+    out_file = open(src, "w")
+
+    json.dump(input_data, out_file, indent=3)
+
+    out_file.close()
+
+
 tab_utenti(data, "tabella_utenti.json")
+
 anonimizza("tabella_utenti.json", "log_anonimizzato.json", data)
+
+elimina_utente_coinvolto("log_anonimizzato.json")
