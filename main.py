@@ -1,6 +1,6 @@
-import json
+from json import load, dump
 
-data = json.load(open("./test_data/anonimizza_test1.json"))
+data = load(open("./test_data/anonimizza_test1.json"))
 
 
 def tab_utenti(input_data: dict, dst: str):
@@ -19,7 +19,7 @@ def tab_utenti(input_data: dict, dst: str):
     # the json file where the output must be stored
     out_file = open(dst, "w")
 
-    json.dump(index_tab, out_file, indent=3)
+    dump(index_tab, out_file, indent=3)
 
     out_file.close()
 
@@ -32,7 +32,7 @@ def anonimizza(tab_utenti: str, dst: str, input_data: dict):
     :param input_data: file di log da anonimizzare
     :return:
     """
-    tab_indici = json.load(open(tab_utenti))
+    tab_indici = load(open(tab_utenti))
 
     for log in range(len(input_data)):
         for item in range(len(tab_indici)):
@@ -41,7 +41,7 @@ def anonimizza(tab_utenti: str, dst: str, input_data: dict):
 
     out_file = open(dst, "w")
 
-    json.dump(data, out_file, indent=3)
+    dump(data, out_file, indent=3)
 
     out_file.close()
 
@@ -52,13 +52,13 @@ def elimina_utente_coinvolto(src: str):
     :param src: path file di log
     :return:
     """
-    input_data = json.load(open(src))
+    input_data = load(open(src))
     for log in range(len(input_data)):
         del (input_data[log][2])
 
     out_file = open(src, "w")
 
-    json.dump(input_data, out_file, indent=3)
+    dump(input_data, out_file, indent=3)
 
     out_file.close()
 
