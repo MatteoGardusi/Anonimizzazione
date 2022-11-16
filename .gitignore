@@ -1,2 +1,4 @@
 .DS_Store
+results/*
+.idea/*
 __pycache__/*
