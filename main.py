@@ -14,7 +14,7 @@ def tab_utenti(input_data: dict, dst: str):
 
     for utente in range(len(data)):
         if input_data[utente][1] not in index_tab:
-            index_tab[input_data[utente][1]] = len(index_tab)
+            index_tab[input_data[utente][1]] = f'{len(index_tab):03d}'
 
     # the json file where the output must be stored
     out_file = open(dst, "w")
@@ -26,7 +26,7 @@ def tab_utenti(input_data: dict, dst: str):
 
 def anonimizza(tab_utenti: str, dst: str, input_data: dict):
     """
-    RIceve un .json con la lista di nomi indicizzati e un .json di log e anonimizza i log salvando il risultato in dst
+    Riceve un .json con la lista di nomi indicizzati e un .json di log e anonimizza i log salvando il risultato in dst
     :param tab_utenti: tabella con nomi utenti indicizzati
     :param dst: destinazione di salvataggi dei log anonimizzati
     :param input_data: file di log da anonimizzare

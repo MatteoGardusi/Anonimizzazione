@@ -1,14 +1,14 @@
 {
-   "arcano": 0,
-   "acqua": 1,
-   "amici": 2,
-   "amicizia": 3,
-   "amore": 4,
-   "anatomia": 5,
-   "andare": 6,
-   "anima": 7,
-   "ansia": 8,
-   "arma": 9,
-   "arte": 10,
-   "-": 11
+   "arcano": "000",
+   "acqua": "001",
+   "amici": "002",
+   "amicizia": "003",
+   "amore": "004",
+   "anatomia": "005",
+   "andare": "006",
+   "anima": "007",
+   "ansia": "008",
+   "arma": "009",
+   "arte": "010",
+   "-": "011"
 }
