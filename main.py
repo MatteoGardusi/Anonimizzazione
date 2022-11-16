@@ -88,7 +88,7 @@ def elimina_utente_coinvolto(src: str):
     scrivi_file_JSON(src, input_data)
 
 
-tab_utenti(data, args.outpu_tab)
+tab_utenti(data, args.output_tab)
 
 anonimizza(args.output_tab, args.output_file, data)
 
