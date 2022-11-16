@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from json import load, dump
 
 
@@ -16,7 +17,27 @@ def scrivi_file_JSON(fname, data_to_be_written, indent=3):
     fout.close()
 
 
-data = leggi_file_JSON('./test_data/anonimizza_test1.json')
+# import da riga di comando
+parser = ArgumentParser(
+    description="Programma che anonimizza una lista di log e salva la corrispondenza tra nomi e codici assegnati")
+parser.add_argument('file_input',
+                    help='Path del file da anonimizzare',
+                    type=str)
+parser.add_argument('-t', '--tab_output',
+                    help='Path del file in cui salvare la tabella; se non indicato, il default è '
+                         './results/tabella_utenti.json',
+                    type=str,
+                    default='./results/tabella_utenti.json')
+parser.add_argument('-o', '--file_output',
+                    help='Path del file in cui salvare la lista anonimizzata; se non indicato, il default è '
+                         './results/log_anonimizzato.json',
+                    type=str,
+                    default='./results/log_anonimizzato.json')
+
+args = parser.parse_args()
+
+# leggere il file di log (lista di liste di stringhe)
+data = leggi_file_JSON(args.file_input)
 
 
 def tab_utenti(input_data: dict, dst: str):
@@ -67,8 +88,8 @@ def elimina_utente_coinvolto(src: str):
     scrivi_file_JSON(src, input_data)
 
 
-tab_utenti(data, "tabella_utenti.json")
+tab_utenti(data, args.tab_output)
 
-anonimizza("tabella_utenti.json", "log_anonimizzato.json", data)
+anonimizza(args.tab_output, args.file_output, data)
 
-elimina_utente_coinvolto("log_anonimizzato.json")
+elimina_utente_coinvolto(args.file_output)
