@@ -20,9 +20,10 @@ def scrivi_file_JSON(fname, data_to_be_written, indent=3):
 parser = ArgumentParser(
     description="Programma che anonimizza una lista di log fornita e archivia le corrispondenze tra nome e "
                 "identificatore")
-parser.add_argument('input_file',
+parser.add_argument('--input_file',
                     help='File contenente la lista di log da anonimizzare',
-                    type=str)
+                    type=str,
+                    default='./test_data/anonimizza_test1.json')
 parser.add_argument('-t', '--output_tab',
                     help='Path di destinazione del file in cui salvare la tabella di corrispondenze. Default:'
                          './results/tabella_utenti.json',
